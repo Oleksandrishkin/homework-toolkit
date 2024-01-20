@@ -1,0 +1,5 @@
+
+
+const filterInitialState =  createSlice( {
+    filter: ""
+})

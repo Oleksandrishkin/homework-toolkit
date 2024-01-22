@@ -2,6 +2,8 @@ import React from "react";
 import { nanoid } from "nanoid";
 import { useDispatch, useSelector } from "react-redux";
 import { addContact, deleteContact, filterContactsByName } from "../redux/slice";
+import { Button, Input, Title, Wrapper, Form } from "./PhoneBook.styled";
+
 
 export const App = () => {
   const dispatch = useDispatch();
@@ -26,12 +28,12 @@ export const App = () => {
   };
 
   return (
-    <div>
-      <h1>Phone Book</h1>
-      <form onSubmit={(e) => handleSubmit(e)}>
+    <Wrapper>
+      <Title>Phone Book</Title>
+      <Form onSubmit={(e) => handleSubmit(e)}>
         <label>
           Name
-          <input
+          <Input
             type="text"
             name="name"
             pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
@@ -41,7 +43,7 @@ export const App = () => {
         </label>
         <label>
           Number
-          <input
+          <Input
             type="tel"
             name="number"
             pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
@@ -49,27 +51,28 @@ export const App = () => {
             required
           />
         </label>
-        <button type="submit">Add contact</button>
-      </form>
-      <label>
+        <Button type="submit">Add contact</Button>
+        <label>
         Find contacts by name
-        <input onChange={handleFilter} type="text" />
+        <Input onChange={handleFilter} type="text" />
       </label>
-      <h2>Contacts</h2>
+      </Form>
+     
+      <Title>Contacts</Title>
       <ul>
         {contacts.map(({ id, name, number }) => {
           return (
-            <li key={id}>
+            <Title key={id}>
               <p>
                 {name}: {number}
               </p>
-              <button type="button" onClick={() => deletePhone(id)}>
+              <Button type="button" onClick={() => deletePhone(id)}>
                 Delete
-              </button>
-            </li>
+              </Button>
+            </Title>
           );
         })}
       </ul>
-    </div>
+    </Wrapper>
   );
 };

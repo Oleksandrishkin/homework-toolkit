@@ -7,12 +7,13 @@ import { FormPhoneBook } from "./FormPhoneBook";
 export const PhoneBook = ()=>{
     const dispatch = useDispatch();
   const contacts = useSelector(Contacts);
+  
   const handleFilter = (e) => {
     dispatch(filterContactsByName(e.currentTarget.value));
   };
 
   
-  const vidibleContacts =  contacts.filter((contact, e)=>{
+  const vidibleContacts =  contacts.filter((contact, e )=>{
     const filterText = e.currentTarget.value
     return  contact.name.toLowerCase().includes(filterText)
   })
@@ -26,7 +27,7 @@ export const PhoneBook = ()=>{
     <Wrapper>
       <Title>Phone Book</Title>
     
-     <FormPhoneBook></FormPhoneBook>
+     <FormPhoneBook handleFilter={handleFilter}></FormPhoneBook>
       <Title>Contacts</Title>
       <ul>
         {vidibleContacts.map(({ id, name, number }) => {

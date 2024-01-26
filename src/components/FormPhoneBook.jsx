@@ -5,9 +5,9 @@ import { Button, Input } from "./PhoneBook.styled";
 import { Form } from "react-router-dom";
 import { Contacts } from "../redux/selectors";
 
-export const FormPhoneBook = ()=>{
+export const FormPhoneBook = (handleFilter)=>{
     const dispatch = useDispatch();
-    const contacts = useSelector(Contacts);
+  
     const handleSubmit = (e) => {
         e.preventDefault();
     

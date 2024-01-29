@@ -15,12 +15,10 @@ export const PhoneBook = ()=>{
     setFilterText(value);
   };
 
-  const handleFilter = (e) => {
-    dispatch(filterContactsByName(e.currentTarget.value));
-  };
+
 
   
-  const vidibleContacts =  contacts.filter((contact, )=>{
+  const visibleContacts =  contacts.filter((contact, )=>{
 
     return  contact.name.toLowerCase().includes(filterText)
   })
@@ -37,7 +35,7 @@ export const PhoneBook = ()=>{
      <FormPhoneBook handleFilter={()=>handleFilterChange}></FormPhoneBook>
       <Title>Contacts</Title>
       <ul>
-        {vidibleContacts.map(({ id, name, number }) => {
+        {visibleContacts.map(({ id, name, number }) => {
           return (
             <Title key={id}>
               <p>

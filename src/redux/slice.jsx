@@ -17,10 +17,10 @@ const contactsSlice = createSlice({
       const contactIdToDelete = action.payload;
       return state.filter(contact => contact.id !== contactIdToDelete);
     },
-    filterContactsByName: (state, action) => {
+    // filterContactsByName: (state, action) => {
       
-      return state.status = action.payload
-    },
+    //   return state.status = action.payload
+    // },
   },
 });
 

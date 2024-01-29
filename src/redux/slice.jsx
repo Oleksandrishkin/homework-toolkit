@@ -18,8 +18,8 @@ const contactsSlice = createSlice({
       return state.filter(contact => contact.id !== contactIdToDelete);
     },
     filterContactsByName: (state, action) => {
-      const filterText = action.payload.toLowerCase();
-      return state.filter(contact => contact.name.toLowerCase().includes(filterText));
+      
+      return state.status = action.payload
     },
   },
 });

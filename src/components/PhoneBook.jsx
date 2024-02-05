@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import { Contacts } from "../redux/selectors";
+import { Contacts, getFilterValue } from "../redux/selectors";
 import { deleteContact, filterContactsByName } from "redux/slice";
 import { Button, Title, Wrapper } from "./PhoneBook.styled";
 import { FormPhoneBook } from "./FormPhoneBook";
@@ -9,18 +9,12 @@ export const PhoneBook = ()=>{
     const dispatch = useDispatch();
   const contacts = useSelector(Contacts)
   
-  const [filterText, setFilterText] = useState('');;
-  
-  const handleFilterChange = (value) => {
-    setFilterText(value);
-  };
-
-
+  const filterValue = useSelector(getFilterValue)
 
   
   const visibleContacts =  contacts.filter((contact, )=>{
 
-    return  contact.name.toLowerCase().includes(filterText)
+    return  contact.name.toLowerCase().includes(filterValue)
   })
    
  
@@ -32,7 +26,7 @@ export const PhoneBook = ()=>{
     <Wrapper>
       <Title>Phone Book</Title>
     
-     <FormPhoneBook handleFilter={()=>handleFilterChange}></FormPhoneBook>
+    
       <Title>Contacts</Title>
       <ul>
         {visibleContacts.map(({ id, name, number }) => {

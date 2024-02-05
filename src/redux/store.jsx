@@ -1,6 +1,6 @@
 
 
-import {contactsReducer } from "./slice"
+import {changeFilter, changeFilterReducer, contactsReducer } from "./slice"
 import { configureStore, legacy_createStore as createStore} from "@reduxjs/toolkit"
 import {tasksReducer, filtersReducer} from './slice'
 import { persistStore, persistReducer } from 'redux-persist';
@@ -12,7 +12,8 @@ const persistConfig = {
   storage,
 }
 const rootReducer = combineReducers({
-    contacts: contactsReducer
+    contacts: contactsReducer,
+    filter:changeFilterReducer
  })
 const persistedPhoneBookReducer = persistReducer(persistConfig, rootReducer)
  

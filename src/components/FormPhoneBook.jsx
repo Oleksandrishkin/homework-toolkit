@@ -2,11 +2,11 @@ import { nanoid } from "nanoid";
 import { useDispatch, useSelector } from "react-redux";
 import { addContact, filterContactsByName } from "redux/slice";
 import { Button, Input } from "./PhoneBook.styled";
-import { Form } from "react-router-dom";
+import { Form } from "../components/PhoneBook.styled";
 import { Contacts } from "../redux/selectors";
 import { useState } from "react";
 
-export const FormPhoneBook = (handleFilterChange)=>{
+export const FormPhoneBook = ()=>{
   const dispatch = useDispatch();
  
 
@@ -21,10 +21,7 @@ export const FormPhoneBook = (handleFilterChange)=>{
   };
 
  
-   const handleFilterForm = (e)=>{
-    e.preventDefault();
-    handleFilterChange(e.currentTarget.value)
-   }
+
    
     return(
         <Form onSubmit={(e) => handleSubmit(e)}>
@@ -49,10 +46,7 @@ export const FormPhoneBook = (handleFilterChange)=>{
           />
         </label>
         <Button type="submit">Add contact</Button>
-        <label>
-        Find contacts by name
-        <Input onChange={handleFilterForm} type="text"  />
-      </label>
+       
       </Form>
     )
 }

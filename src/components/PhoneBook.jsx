@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { Contacts, getFilterValue } from "../redux/selectors";
-import { deleteContact, filterContactsByName } from "redux/slice";
+import { deleteContact, filterContactsByName } from "redux/operation";
 import { Button, Title, Wrapper } from "./PhoneBook.styled";
 import { FormPhoneBook } from "./FormPhoneBook";
 import { useState } from "react";
@@ -12,15 +12,15 @@ export const PhoneBook = ()=>{
   const filterValue = useSelector(getFilterValue)
 
   
-  const visibleContacts =  contacts.filter((contact, )=>{
-
-    return  contact.name.toLowerCase().includes(filterValue)
-  })
-   
+//   const visibleContacts =  contacts.filter((contact )=>{
+// console.log(contact);
+//     return  contact.name.toLowerCase().includes(filterValue)
+//   })
+//    console.log(visibleContacts);
  
-  const deletePhone = (contactId) => {
-    dispatch(deleteContact(contactId));
-  };
+//   const deletePhone = (contactId) => {
+//     dispatch(deleteContact(contactId));
+//   };
 
   return (
     <Wrapper>
@@ -29,7 +29,7 @@ export const PhoneBook = ()=>{
     
       <Title>Contacts</Title>
       <ul>
-        {visibleContacts.map(({ id, name, number }) => {
+        {/* {visibleContacts.map(({ id, name, number }) => {
           return (
             <Title key={id}>
               <p>
@@ -40,7 +40,7 @@ export const PhoneBook = ()=>{
               </Button>
             </Title>
           );
-        })}
+        })} */}
       </ul>
     </Wrapper>
   );

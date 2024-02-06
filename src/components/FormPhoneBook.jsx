@@ -1,6 +1,6 @@
 import { nanoid } from "nanoid";
 import { useDispatch, useSelector } from "react-redux";
-import { addName, addNumber  } from "redux/operation";
+import { addContacts, addNumber  } from "redux/operation";
 import { Button, Input } from "./PhoneBook.styled";
 import { Form } from "../components/PhoneBook.styled";
 import { Contacts } from "../redux/selectors";
@@ -16,9 +16,9 @@ export const FormPhoneBook = ()=>{
     const name = e.currentTarget.elements.name.value;
     const number = e.currentTarget.elements.number.value;
 
-    // const newContact = { id: nanoid(), name, number };
-    dispatch(addName(name));
-    dispatch(addNumber(number));
+    const newContact = {  name, number };
+    dispatch(addContacts(newContact));
+   
 
     e.currentTarget.reset()
   };

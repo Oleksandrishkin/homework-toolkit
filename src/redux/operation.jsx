@@ -14,27 +14,20 @@ export const fetchContacts = createAsyncThunk('contacts/fetchTasks', async(_, th
             }
 })
 
-export const addName = createAsyncThunk('contacts/addName', async(text,  thunkApi)=>{
+export const addContacts = createAsyncThunk('contacts/addName', async(contact,  thunkApi)=>{
     try{
-const res = await axios.post('/contacts', {text})
+const res = await axios.post('/contacts', contact)
 return res.data
     } catch (error) {
 thunkApi.rejectWithValue('Упс Помилка')
     }
 })
 
-export const addNumber = createAsyncThunk('contacts/addNumber', async(text,  thunkApi)=>{
-    try{
-const res = await axios.post('/contacts', {text})
-return res.data
-    } catch (error) {
-thunkApi.rejectWithValue('Упс Помилка')
-    }
-})
 
-export const deleteContact = createAsyncThunk('contacts/delete', async (task, thunkAPI)=>{
+
+export const deleteContact = createAsyncThunk('contacts/delete', async  (taskId, thunkAPI)=>{
     try{
-const res = await axios.delete(`contacts/${task.id}`)
+const res = await axios.delete(`contacts/${taskId}`)
 return res.data
     }catch(error){
 thunkAPI.rejectWithValue(error.message)

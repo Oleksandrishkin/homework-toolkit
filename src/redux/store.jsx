@@ -6,6 +6,7 @@ import {tasksReducer, filtersReducer} from './slice'
 import { persistStore, persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 import { combineReducers } from "redux";
+import { contactsApi } from "./APIslice";
 
 
 export const store = configureStore({
@@ -13,7 +14,11 @@ export const store = configureStore({
 
   reducer:{
     contacts: contactsReducer,
-    filter:changeFilterReducer
+    filter:changeFilterReducer,
+    [contactsApi.reducerPath]: contactsApi.reducer,
+}, 
+middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware().concat(contactsApi.middleware),
   }
    
- })
+ )

@@ -1,46 +1,46 @@
-import { useDispatch, useSelector } from "react-redux";
-import { selectContacts, selectFilterValue ,selectVisibleContacts,} from "../redux/selectors";
-import { deleteContact,  fetchContacts, filterContactsByName } from "redux/operation";
-import { Button, Title, Wrapper } from "./PhoneBook.styled";
-import { FormPhoneBook } from "./FormPhoneBook";
-import { useEffect, useState } from "react";
+import { useDeleteContactMutation, useGetContactsQuery } from '../redux/APIslice';
+import { Button, Title, Wrapper } from './PhoneBook.styled';
+import { FormPhoneBook } from './FormPhoneBook';
+import { useEffect } from 'react';
 
-export const PhoneBook = ()=>{
-    const dispatch = useDispatch();
-  const contacts = useSelector(selectVisibleContacts)
-  
-  // const filterValue = useSelector(selectFilterValue)
-useEffect(()=>{
-  dispatch(fetchContacts())
-}, [dispatch])
-  
-  
+export const PhoneBook = () => {
+  const { data: contacts, isLoading, isError } = useGetContactsQuery();
+  const [deleteContact, { isLoading: isDeleting }] = useDeleteContactMutation();
 
- 
-  const deletePhone = (contactId) => {
-    dispatch(deleteContact(contactId));
+  useEffect(() => {
+
+  }, []);
+
+  const handleDeleteContact = async (contactId) => {
+    try {
+      await deleteContact(contactId);
+    } catch (error) {
+      console.error('Failed to delete contact:', error);
+    }
   };
+
+  if (isLoading) return <div>Loading...</div>;
+  if (isError) return <div>Error fetching contacts</div>;
 
   return (
     <Wrapper>
       <Title>Phone Book</Title>
-    
-    
+
+
+
       <Title>Contacts</Title>
       <ul>
-        {contacts.map(({ id, name, number }) => {
-          return (
-            <Title key={id}>
-              <p>
-                {name}: {number}
-              </p>
-              <Button type="button" onClick={() => deletePhone(id)}>
-                Delete
-              </Button>
-            </Title>
-          );
-        })}
+        {contacts.map(({ id, name, number }) => (
+          <Title key={id}>
+            <p>
+              {name}: {number}
+            </p>
+            <Button type="button" disabled={isDeleting} onClick={() => handleDeleteContact(id)}>
+              {isDeleting ? 'Deleting...' : 'Delete'}
+            </Button>
+          </Title>
+        ))}
       </ul>
     </Wrapper>
   );
-}
+};

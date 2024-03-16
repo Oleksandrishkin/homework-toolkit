@@ -7,15 +7,19 @@ import { Contacts } from "../redux/selectors";
 import { PhoneBook } from "./PhoneBook";
 import { FormPhoneBook } from "./FormPhoneBook";
 import { Filter } from "./FilterContacts";
+import { selectIsLoggedIn } from "redux/auth/selectors";
+import { UserMenu } from "./UserMenu";
+import { AuthMenu } from "./AuthMenu";
 
 
 export const App = () => {
- 
+  const isLoggedIn = useSelector(selectIsLoggedIn)
   return(
     <>
-     <FormPhoneBook/>
+     {isLoggedIn ? <UserMenu/> :  <AuthMenu/> }
+     {/* <FormPhoneBook/>
      <Filter/>
-    <PhoneBook/>
+    <PhoneBook/> */}
     </>
    
   )

@@ -10,6 +10,7 @@ export const Title = styled.h1`
 export const Wrapper = styled.div`
   padding: 4em;
   background: papayawhip;
+  margin-top: 50px;
 `;
 
 export const Input = styled.input`

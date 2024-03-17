@@ -23,7 +23,7 @@ useEffect(()=>{
 
   return (
     <Wrapper>
-      <Title>Phone Book</Title>
+    
     
     
       <Title>Contacts</Title>

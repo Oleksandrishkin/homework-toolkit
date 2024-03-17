@@ -7,6 +7,7 @@ import { store, persistor } from 'redux/store';
 import { PersistGate } from 'redux-persist/integration/react';
 import { RouterProvider } from 'react-router-dom';
 import { router } from './router/router';
+import { GlobalStyle } from 'GlobalStyle';
 
 ReactDOM.createRoot(document.getElementById('root')).render( <
     React.StrictMode >
@@ -19,8 +20,13 @@ ReactDOM.createRoot(document.getElementById('root')).render( <
     <
     RouterProvider router = { router } >
     <
+    GlobalStyle >
+
+
+    <
     App / >
     <
+    /GlobalStyle> <
     /RouterProvider> < /
     Provider >
     <

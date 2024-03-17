@@ -8,9 +8,13 @@ import { App } from "components/App";
 import { PhoneBook } from "components/PhoneBook";
 import PrivateRoute from "components/PrivateRouter";
 import RestrictedRouter from "components/RestrictedRouter";
-import { Home } from "components/pages/Home";
-import { Login } from "components/pages/Login";
-import { Registration } from "components/pages/Registration";
+
+
+import { SecondModal } from "components/Header/SecondModal";
+import { FirstModal } from "components/Header/FirstModal";
+
+import { ThirdModal } from "components/Header/ThirdModal";
+import { ContactsModal } from "components/Header/ContactsModal";
 
 // import { Home, Login, Registration } from "components/pages";
 
@@ -20,28 +24,35 @@ import { Registration } from "components/pages/Registration";
 // /Register
 
 
+
 export const router =  createBrowserRouter(
     [
         {
             path: '/',
             element: <App/>,
             children: [
-                {
-                    index: true,
-                    element: <Home/>
-                }
-                ,
+               
+                
                 {
                     path: '/contacts',
                     element: <PrivateRoute component={PhoneBook} redirecTo='/login'/>
                 },
                 {
                     path: '/login',
-                    element: <RestrictedRouter component={Login} redirecTo='/'/>
+                    element: <RestrictedRouter component={SecondModal} redirecTo='/'/>
                 },
                 {
                     path: '/register',
-                    element: <Registration/>
+                    element: <RestrictedRouter component={FirstModal} redirecTo='/'/>
+                }
+                ,
+                {
+                    path: '/userMenu',
+                    element: <ThirdModal/>
+                },
+                {
+                    path: '/addContact',
+                    element: <ContactsModal/>
                 }
             ]
         }

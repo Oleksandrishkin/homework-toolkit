@@ -5,12 +5,14 @@ import './index.css';
 import { Provider } from 'react-redux';
 import { store, persistor } from 'redux/store';
 import { PersistGate } from 'redux-persist/integration/react';
-import { RouterProvider } from 'react-router-dom';
+import { BrowserRouter, RouterProvider } from 'react-router-dom';
 import { router } from './router/router';
 import { GlobalStyle } from 'GlobalStyle';
 
 ReactDOM.createRoot(document.getElementById('root')).render( <
     React.StrictMode >
+    <
+    BrowserRouter basename = "/calendar" / >
     <
     PersistGate loading = { null }
     persistor = { persistor } >
@@ -26,10 +28,12 @@ ReactDOM.createRoot(document.getElementById('root')).render( <
     <
     App / >
     <
-    /GlobalStyle> <
-    /RouterProvider> < /
+    /GlobalStyle> < /
+    RouterProvider > < /
     Provider >
     <
-    /PersistGate> < /
+    /PersistGate>  <
+    /BrowserRouter> <
+    /
     React.StrictMode >
 );

@@ -11,15 +11,15 @@ import { GlobalStyle } from 'GlobalStyle';
 
 ReactDOM.createRoot(document.getElementById('root')).render( <
     React.StrictMode >
-    <
-    BrowserRouter basename = "/homework-toolkit" >
+
     <
     PersistGate loading = { null }
     persistor = { persistor } >
     <
     Provider store = { store } >
     <
-    RouterProvider router = { router } >
+    RouterProvider basename = "/homework-toolkit"
+    router = { router } >
     <
     GlobalStyle / >
     <
@@ -27,7 +27,8 @@ ReactDOM.createRoot(document.getElementById('root')).render( <
     <
     /RouterProvider> <
     /Provider> <
-    /PersistGate> <
-    /BrowserRouter> <
+    /PersistGate>
+
+    <
     /React.StrictMode>
 );
